@@ -1,0 +1,55 @@
+{% load blog_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+</head>
+<body>
+
+
+<div id="content">
+    <h2>
+        <p>
+            <br>
+            <a href="/blog" class="logo"><strong>На главную </strong></a>
+        </p>
+    </h2>
+
+    {% block content %}
+    {% endblock %}
+</div>
+<div id="sidebar">
+
+    <h2>Блок о здоровой пище
+        <p>
+            <a href="/blog/search" class="logo"><strong>Поиск на сайте</strong></a>
+        </p>
+    </h2>
+    <p>Повседневная жизнь станет проще.</p>
+    <p>Общее количество статей: {% total_posts %} </p>
+    <h3>Последние посты:</h3>
+    {% show_latest_posts %}
+
+    <h3>Статьи с найбольшим количеством комментариев:</h3>
+    {% get_most_commented_posts as most_commented_posts %}
+    <ul>
+        {% for post in most_commented_posts %}
+        <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+    <p>jurasach@mail.ru - связь с админом.</p>
+
+
+    <p><a href="{% url 'blog:post_feed' %}">Подписаться на RRS</a></p>
+
+    <script src="https://yastatic.net/share2/share.js"></script>
+    <div class="ya-share2" data-curtain data-size="l" data-shape="round"
+         data-services="vkontakte,facebook,odnoklassniki,telegram,viber,whatsapp,skype"></div>
+
+
+</div>
+</body>
+</html>
