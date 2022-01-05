@@ -12,7 +12,8 @@
     </h3>
     {% for post in results %}
         <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-        {{ post.body|truncatewords:5 }}
+        {{ post.body|truncatewords:10 }}
+
     {% empty %}
       <p>Результатов не найдено.</p>
     {% endfor %}

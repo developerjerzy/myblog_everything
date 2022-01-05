@@ -21,12 +21,18 @@ class Post(models.Model):
     author = models.ForeignKey(User,
                                on_delete=models.CASCADE,
                                related_name='blog_posts')
-    image_first = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
-    image_second = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
-    image_third = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
     body = models.TextField()
+
+    image_first = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
+
     body_double = models.TextField(default='')
+
+    image_second = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
+
     body_third = models.TextField(default='')
+
+    image_third = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
+
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
