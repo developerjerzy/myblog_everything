@@ -25,11 +25,11 @@ class Post(models.Model):
 
     image_first = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
 
-    body_double = models.TextField(default='')
+    body_double = models.TextField(default='', blank=True)
 
     image_second = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
 
-    body_third = models.TextField(default='')
+    body_third = models.TextField(default='', blank=True)
 
     image_third = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
 
